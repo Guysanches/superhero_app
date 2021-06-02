@@ -1,17 +1,27 @@
+import 'package:dio/dio.dart';
+import 'package:superhero_app/shared/models/superhero_model.dart';
 import '../components/custom_dio/custom_dio.dart';
-import 'package:flutter/material.dart';
 
-class Repository {
-  final CustomDio cConexao;
+class DataRepository {
+  var cConexao = CustomDio();
 
-  Repository({required this.cConexao});
-  
-  Future<List<SuperHero>> getHero() async{
-    try{
-      var response = await cConexao.get("/all");
-      return (response.data as list).map((item) => SuperHero.fromJson(item)).toList();
-    } on DioError catch (e){
-      throw(e.message)
+  Future<List<SuperHero>> getHeros() async {
+    try {
+      var response = await cConexao.get("/all.json");
+      return (response.data as List)
+          .map((item) => SuperHero.fromMap(item))
+          .toList();
+    } on DioError catch (e) {
+      throw (e.message);
+    }
+  }
+
+  Future<SuperHero> getOneHero(String id) async {
+    try {
+      var response = await cConexao.get("/id/${id.toString()}.json");
+      return SuperHero.fromJson(response.data);
+    } on DioError catch (e) {
+      throw (e.message);
     }
   }
 }

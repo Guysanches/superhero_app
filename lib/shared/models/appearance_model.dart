@@ -50,7 +50,7 @@ class Appearance {
   factory Appearance.fromMap(Map<String, dynamic> map) {
     return Appearance(
       gender: map['gender'],
-      race: map['race'],
+      race: map['race'] ?? '',
       height: List<String>.from(map['height']),
       weight: List<String>.from(map['weight']),
       eyeColor: map['eyeColor'],

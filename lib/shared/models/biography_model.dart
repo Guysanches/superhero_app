@@ -59,7 +59,7 @@ class Biography {
       aliases: List<String>.from(map['aliases']),
       placeOfBirth: map['placeOfBirth'],
       firstAppearance: map['firstAppearance'],
-      publisher: map['publisher'],
+      publisher: map['publisher'] ?? '',
       alignment: map['alignment'],
     );
   }

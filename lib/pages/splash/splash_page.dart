@@ -29,8 +29,8 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               SvgPicture.asset(
                 AppImages.logo,
-                width: 128,
-                height: 128,
+                width: 128.0,
+                height: 128.0,
               ),
               Text(
                 'SuperHero APP',
