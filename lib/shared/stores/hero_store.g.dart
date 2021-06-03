@@ -39,6 +39,21 @@ mixin _$HeroStore on _HeroStoreBase, Store {
     });
   }
 
+  final _$cHeroDetailAtom = Atom(name: '_HeroStoreBase.cHeroDetail');
+
+  @override
+  SuperHero? get cHeroDetail {
+    _$cHeroDetailAtom.reportRead();
+    return super.cHeroDetail;
+  }
+
+  @override
+  set cHeroDetail(SuperHero? value) {
+    _$cHeroDetailAtom.reportWrite(value, super.cHeroDetail, () {
+      super.cHeroDetail = value;
+    });
+  }
+
   final _$cStateAtom = Atom(name: '_HeroStoreBase.cState');
 
   @override
@@ -69,6 +84,14 @@ mixin _$HeroStore on _HeroStoreBase, Store {
     });
   }
 
+  final _$getRandomHeroAsyncAction =
+      AsyncAction('_HeroStoreBase.getRandomHero');
+
+  @override
+  Future<dynamic> getRandomHero() {
+    return _$getRandomHeroAsyncAction.run(() => super.getRandomHero());
+  }
+
   final _$getItemsAsyncAction = AsyncAction('_HeroStoreBase.getItems');
 
   @override
@@ -88,6 +111,7 @@ mixin _$HeroStore on _HeroStoreBase, Store {
     return '''
 cFiltro: ${cFiltro},
 cItems: ${cItems},
+cHeroDetail: ${cHeroDetail},
 cState: ${cState},
 msgError: ${msgError}
     ''';

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get_it/get_it.dart';
-
 import 'package:superhero_app/core/core.dart';
 import 'package:superhero_app/pages/home/widgets/hero_item_widget.dart';
+import 'package:superhero_app/pages/home/widgets/search_field_widget.dart';
 import 'package:superhero_app/shared/stores/hero_store.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,20 +39,27 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(20),
                             child: Text(
-                              'SuperHeros!',
+                              'SuperHeroes',
                               style: AppTextStyles.cHeadingTextStyle,
                             ),
                           ),
+                          IconButton(
+                              onPressed: () async {
+                                cData.getRandomHero().then((value) =>
+                                    Navigator.of(context)
+                                        .pushNamed('/herodetail'));
+                              },
+                              icon: Icon(Icons.shuffle,
+                                  color: AppColors.cTextWhiteColor))
                         ],
                       ),
-                      Observer(
-                        builder: (context) => SearchFieldWidget(
-                            onChanged: (value) => cData.searchHero(value)),
-                      ),
+                      SearchFieldWidget(
+                          onChanged: (value) => cData.searchHero(value)),
                     ],
                   ),
                 ),
@@ -106,38 +112,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SearchFieldWidget extends StatelessWidget {
-  final Function(String) onChanged;
-
-  const SearchFieldWidget({
-    Key? key,
-    required this.onChanged,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: TextField(
-        onChanged: (value) => onChanged(value),
-        cursorColor: Colors.white,
-        style: AppTextStyles.cTextFieldTextStyle,
-        decoration: InputDecoration(
-            hintText: 'Search',
-            hintStyle: AppTextStyles.cTextFieldTextStyle,
-            labelStyle: AppTextStyles.cTextFieldTextStyle,
-            suffixIcon: Icon(Icons.search, color: Colors.white),
-            fillColor: Colors.white,
-            focusColor: Colors.white,
-            hoverColor: Colors.white,
-            focusedBorder: AppConsts.cInputBorder,
-            enabledBorder: AppConsts.cInputBorder,
-            border: AppConsts.cInputBorder),
       ),
     );
   }

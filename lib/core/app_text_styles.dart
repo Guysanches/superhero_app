@@ -13,4 +13,25 @@ class AppTextStyles {
     fontSize: 18,
     color: AppColors.cTextWhiteColor,
   );
+
+  static final TextStyle cDescriptionItemHome =
+      GoogleFonts.poppins(fontSize: 14, color: AppColors.cTextDarkColor);
+
+  static final TextStyle cTitleItemHome = GoogleFonts.poppins(
+      fontSize: 14,
+      color: AppColors.cTextDarkColor,
+      fontWeight: FontWeight.bold);
+
+  static final TextStyle cTitleItemDetail = GoogleFonts.poppins(
+      fontSize: 16,
+      color: AppColors.cTextDarkColor,
+      fontWeight: FontWeight.bold);
+
+  static final TextStyle cSubItemDetail =
+      GoogleFonts.poppins(fontSize: 14, color: AppColors.cTextVarDarkColor);
+
+  static final TextStyle cDescriptionItemDetail = GoogleFonts.poppins(
+      fontSize: 14,
+      color: AppColors.cTextDarkColor,
+      fontWeight: FontWeight.bold);
 }

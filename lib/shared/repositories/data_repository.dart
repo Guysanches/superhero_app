@@ -15,13 +15,4 @@ class DataRepository {
       throw (e.message);
     }
   }
-
-  Future<SuperHero> getOneHero(String id) async {
-    try {
-      var response = await cConexao.get("/id/${id.toString()}.json");
-      return SuperHero.fromJson(response.data);
-    } on DioError catch (e) {
-      throw (e.message);
-    }
-  }
 }

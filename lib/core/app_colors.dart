@@ -7,6 +7,7 @@ class AppColors {
   static final Color cTextDefaultColor = Color(0xFFFFFFFA);
   static final Color cTextBodyColor = Color(0xFF4B4B4B);
   static final Color cTextDarkColor = Color(0xFF303030);
+  static final Color cTextVarDarkColor = Colors.black54;
   static final Color cTextWhiteColor = Colors.white;
   static final Color cPrimaryColor = Color(0xFF3382CC);
   static final Color cShadowColor = Color(0xFF4056C6).withOpacity(.16);
