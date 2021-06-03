@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:superhero_app/pages/hero_detail/widgets/Utils/status_bar.dart';
-import 'package:superhero_app/pages/hero_detail/widgets/Utils/sub_Item.dart';
 import 'package:superhero_app/pages/hero_detail/widgets/Utils/title_item.dart';
 import 'package:superhero_app/shared/stores/hero_store.dart';
 
